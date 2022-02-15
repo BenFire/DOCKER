@@ -1,8 +1,9 @@
-# Compiled Form Modules
-*.fmx
-
-# Compiled Menu Modules
-*.mmx
-
-# Compiled Pre-Linked Libraries
-*.plx
+FROM mysql
+ENV MYSQL_ROOT_PASSWORD 123
+ENV MYSQL_DATAVASE users
+ENV MYSQL_USER daniel
+ENV MYSQL_PASSWORD 1234
+ADD trucorp-db.sql /docker-entrypoint-initdb.d
+EXPOSE 6000:80
+FROM php:7.2-apache
+COPY src/ /var/www/html/
